@@ -10,7 +10,7 @@ export const getPosts = () => dispatch => {
 		type: GET_POSTS_REQUEST
 	});
 	axios
-		.get('/posts')
+		.get('https://jsonplaceholder.typicode.com/posts')
 		.then(res => {
 			dispatch({
 				type: GET_POSTS_SUCCESS,
