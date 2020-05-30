@@ -1,4 +1,4 @@
-import { GET_POSTS_REQUEST, GET_POSTS_SUCCESS } from '../actions/actionTypes';
+import { GET_POSTS_REQUEST, GET_POSTS_SUCCESS } from 'src/store/actions/actionTypes';
 
 const initialState = {
 	success: false,

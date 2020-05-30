@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import errorsReducer from './errorsReducer';
-import newsfeedReducer from './newsfeedReducer';
+import errorsReducer from 'src/store/reducers/errorsReducer';
+import newsfeedReducer from 'src/store/reducers/newsfeedReducer';
 
 const rootReducer = combineReducers({
 	errors: errorsReducer,

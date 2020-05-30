@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getPosts } from '../../store/actions/newsfeedAction';
+import { getPosts } from 'src/store/actions/newsfeedAction';
 import './Newsfeed.scss';
 
 class Newsfeed extends React.Component {
