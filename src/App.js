@@ -2,12 +2,12 @@ import React, { Suspense } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import 'src/App.scss';
-import Newsfeed from 'src/containers/Newsfeed/Newsfeed';
+import Todos from 'src/containers/Todos/Todos';
 
 const App = props => {
 	const routes = (
 			<Switch>
-				<Route path="/" exact component={Newsfeed} />
+				<Route path="/" exact component={Todos} />
 				<Redirect to="/" />
 			</Switch>
 		);
