@@ -18,9 +18,17 @@ const Todos = () => {
 			setTask('')
 		}
 	}
+
+	const handleSelectItem = (e) => {
+		console.log(e.target.checked)
+	}
+
+	const handleInputItemChange = (e) => {
+		console.log(e.target.value)
+	}
 	
 	const renderTaskList = useMemo(() => {
-		return <List data={tasks} />
+		return <List data={tasks} onSelectItem={handleSelectItem} onInputItemChange={handleInputItemChange}/>
 	}, [tasks])
 
 	return (
