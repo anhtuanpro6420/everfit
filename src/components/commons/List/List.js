@@ -7,7 +7,7 @@ const List = (props) => {
 	if (data && data.length) {
 		listRender = (
 			<ul>
-				{data.map((item, index) => <li key={index}><ListItem item={item} onSelectCheckBox={onSelectItem} onInputChange={onInputItemChange}/></li>)}
+				{data.map((item, index) => <li key={item.id}><ListItem item={item} onSelectCheckBox={onSelectItem} onInputChange={onInputItemChange}/></li>)}
 			</ul>
 		)
 	}

@@ -1,21 +1,41 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState, useMemo, useCallback} from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { v4 as uuid } from 'uuid';
 import Input from 'src/components/commons/Input/Input';
 import List from 'src/components/commons/List/List';
 import './Todos.scss';
 
 const Todos = () => {
-	const [task, setTask] = useState('');
-	const [tasks, setTasks] = useState([]);
+	const initialState = [
+		{
+			id: uuid(),
+			name: 'task1',
+			isCompleted: false
+		},
+		{
+			id: uuid(),
+			name: 'task2',
+			isCompleted: true
+		}
+	]
+	const [taskName, setTaskName] = useState('');
+	const [taskStatus, setTaskStatus] = useState(false);
+	const [tasks, setTasks] = useState(initialState);
 
 	const handleInputChange = (e) => {
-		setTask(e.target.value)
+		setTaskName(e.target.value)
 	}
 
 	const handleKeyDown = (e) => {
 		if (e.key === 'Enter') {
-			setTasks([...tasks, task]);
-			setTask('')
+			const newTask = {
+				id: uuid(),
+				name: taskName,
+				isCompleted: taskStatus
+			}
+			setTasks([...tasks, newTask]);
+			setTaskName('');
 		}
 	}
 
@@ -23,19 +43,22 @@ const Todos = () => {
 		console.log(e.target.checked)
 	}
 
-	const handleInputItemChange = (e) => {
-		console.log(e.target.value)
+	const handleInputItemChange = (e, item) => {
+		if (tasks && tasks.length) {
+			const indexItem = tasks.findIndex(el => el.id === item.id);
+			if (indexItem > -1) {
+				tasks[indexItem].name = e.target.value;
+			}
+		}
+		setTasks(tasks);
 	}
-	
-	const renderTaskList = useMemo(() => {
-		return <List data={tasks} onSelectItem={handleSelectItem} onInputItemChange={handleInputItemChange}/>
-	}, [tasks])
 
 	return (
 		<>
 		<h1>Todos</h1>
-		<Input value={task} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
-		{renderTaskList}
+		<Input value={taskName} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
+		<List data={tasks} onSelectItem={handleSelectItem} onInputItemChange={handleInputItemChange}/>
+		<Link to="/new-feeds">New feeds</Link>
 		</>	
 	);
 }

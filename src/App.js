@@ -3,12 +3,14 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import 'src/App.scss';
 import Todos from 'src/containers/Todos/Todos';
+import Newfeeds from 'src/containers/Newfeeds/Newfeeds';
 
 const App = props => {
 	const routes = (
 			<Switch>
+				<Route path="/new-feeds" component={Newfeeds} />
 				<Route path="/" exact component={Todos} />
-				<Redirect to="/" />
+				<Redirect exact to="/" />
 			</Switch>
 		);
 

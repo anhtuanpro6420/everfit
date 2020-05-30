@@ -6,7 +6,7 @@ const ListItem = (props) => {
 	const {item, onSelectCheckBox, onInputChange} = props;
 	return (
 		<>
-			<CheckBox checked={false} onChange={onSelectCheckBox}/> <Input value={item} onChange={onInputChange}/>
+			<CheckBox checked={false} onChange={onSelectCheckBox}/> <Input value={item.name} onChange={(e) => onInputChange(e, item)}/>
 		</>
 	)
 }
